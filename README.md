@@ -3,7 +3,7 @@
 ##DOCKER INSTALLATION
 
 1. Create a bridge network: "docker network create jenkins"
-   A bridge network is a Link Layer device which forwards traffic between network segments.
+   - A bridge network is a Link Layer device which forwards traffic between network segments.
 
 2. Create a docker dind to execute docker commands inside jenkins node
    

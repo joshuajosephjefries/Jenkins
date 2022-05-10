@@ -1,5 +1,7 @@
 # Jenkins
 
+<img width="795" alt="pipeline" src="https://user-images.githubusercontent.com/79646955/167696932-1c82e1e4-a266-4ee0-b4c9-7f29111b002f.png">
+
 ##JENKINS INSTALLATION USING DOCKER CONTAINER
 
 1. Create a bridge network: "docker network create jenkins"

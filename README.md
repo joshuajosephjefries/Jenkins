@@ -8,7 +8,7 @@
 2. Create a docker dind to execute docker commands inside jenkins node
    
  > docker run \
- >   --name jenkins-docker \
+ >>   --name jenkins-docker \
  >   --rm \
  >   --detach \
  >   --privileged \
@@ -39,4 +39,4 @@
  >   --volume jenkins-docker-certs:/certs/client:ro \
  >   myjenkins-blueocean:2.332.2-1
 
-6. Proceed to the Post-installation setup wizard.
+6. Proceed to the Post-installation setup wizard :+1:

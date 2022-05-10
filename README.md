@@ -7,7 +7,7 @@
 
 2. Create a docker dind to execute docker commands inside jenkins node
    
- > docker run 
+ > docker run \
  >   --name jenkins-docker \
  >   --rm \
  >   --detach \

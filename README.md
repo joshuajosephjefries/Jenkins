@@ -1,6 +1,6 @@
 # Jenkins
 
-##DOCKER INSTALLATION
+##JENKINS INSTALLATION USING DOCKER CONTAINER
 
 1. Create a bridge network: "docker network create jenkins"
    - A bridge network is a Link Layer device which forwards traffic between network segments.

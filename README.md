@@ -7,7 +7,7 @@
 
 2. Create a docker dind to execute docker commands inside jenkins node
    
- > docker run \
+ > docker run <br />
  >   --name jenkins-docker \
  >   --rm \
  >   --detach \
@@ -20,6 +20,8 @@
  >   --publish 2376:2376 \
  >   docker:dind \
  >   --storage-driver overlay2
+
+
 
 3. Build the docker container: "docker build -t myjenkins-blueocean:2.332.2-1 ." (Refer the file from repository)
 

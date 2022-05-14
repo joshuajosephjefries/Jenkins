@@ -1,2 +1,1 @@
-Jenkinsfile* linguist-language=Java
-Dockerfile* linguist-language=Go
+Jenkinsfile* linguist-language=Java, Go

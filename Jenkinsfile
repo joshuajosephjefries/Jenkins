@@ -12,5 +12,10 @@ pipeline {
             checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/joshuajosephjefries/Jenkins.git']]])
             }
         }
+        stage('BUILD_DETAILS') {
+            steps {
+                echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+            }
+        }
     }
 }

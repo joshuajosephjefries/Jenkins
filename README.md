@@ -13,7 +13,9 @@
 
 3. Create a dockerfile. Refer the code from this repository.
 
-4. Build the docker container: "docker build -t myjenkins-blueocean:2.332.2-1 ." (Refer the file from repository)
+4. Build the docker container: (Refer the file from repository)
+
+> docker build -t myjenkins-blueocean:2.332.2-1 .
 
 5. Run the docker container:
 

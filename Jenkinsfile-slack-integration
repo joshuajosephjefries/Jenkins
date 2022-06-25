@@ -8,11 +8,13 @@ pipeline {
         }
         stage('GIT CLONE') {
             steps {
-            checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/joshuajosephjefries/Jenkins.git']]])
+                echo "Cloning stage..."
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/joshuajosephjefries/Jenkins.git']]])
             }
         }
         stage('BUILD_DETAILS') {
             steps {
+                echo "Build Details..."
                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
             }
         }
@@ -20,17 +22,17 @@ pipeline {
     post {
         success {
             wrap([$class: 'BuildUser']){
-                slackSend(channel: "#general", color: "good" , message: "Status: ${currentBuild.currentResult}, USER: ${BUILD_USER}, Build_ID: #${env.BUILD_ID}, JOB_NAME: ${env.JOB_NAME}, URL: <${env.BUILD_URL}|(Open)>")
+                slackSend(channel: "#general", color: "good",  message: "Status: ${currentBuild.currentResult}, USER: ${BUILD_USER}, Build_ID: #${env.BUILD_ID}, JOB_NAME: ${env.JOB_NAME}, URL: <${env.BUILD_URL}|(Open)>")
             }
         }
         failure {
             wrap([$class: 'BuildUser']){
-                slackSend(channel: "#general", color: "red" , message: "Status: ${currentBuild.currentResult}, USER: ${BUILD_USER}, Build_ID: #${env.BUILD_ID}, JOB_NAME: ${env.JOB_NAME}, URL: <${env.BUILD_URL}|(Open)>")
+                slackSend(channel: "#general", color: "#FF0000" , message: "Status: ${currentBuild.currentResult}, USER: ${BUILD_USER}, Build_ID: #${env.BUILD_ID}, JOB_NAME: ${env.JOB_NAME}, URL: <${env.BUILD_URL}|(Open)>")
             }
         }
         unstable {
             wrap([$class: 'BuildUser']){
-                slackSend(channel: "#general", color: "amber" , message: "Status: ${currentBuild.currentResult}, USER: ${BUILD_USER}, Build_ID: #${env.BUILD_ID}, JOB_NAME: ${env.JOB_NAME}, URL: <${env.BUILD_URL}|(Open)>")
+                slackSend(channel: "#general", color: "#FFBF00" , message: "Status: ${currentBuild.currentResult}, USER: ${BUILD_USER}, Build_ID: #${env.BUILD_ID}, JOB_NAME: ${env.JOB_NAME}, URL: <${env.BUILD_URL}|(Open)>")
             }
         }
     }

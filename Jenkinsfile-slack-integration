@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+        stage('GIT CLONE') {
+            steps {
+            checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/joshuajosephjefries/Jenkins.git']]])
+            }
+        }
+        stage('BUILD_DETAILS') {
+            steps {
+                echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+            }
+        }
+        stage('SLACK_NOTIFICATION') {
+            steps {
+                slackSend(channel: "#general", message: "${env.BUILD_STATUS} - ${env.JOB_NAME} - #${env.BUILD_NUMBER} - *${env.STAGE_NAME}* <${env.BUILD_URL}|(Open)>")
+            }
+        }
+    }
+}

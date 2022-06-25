@@ -17,10 +17,10 @@ pipeline {
                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
             }
         }
-        stage('SLACK_NOTIFICATION') {
-            steps {
-                slackSend(channel: "#general", message: "${env.BUILD_STATUS} - ${env.JOB_NAME} - #${env.BUILD_NUMBER} - *${env.STAGE_NAME}* <${env.BUILD_URL}|(Open)>")
-            }
+    }
+    post {
+        always {
+          slackSend(channel: "#general", message: "${currentBuild.currentResult} - ${env.JOB_NAME} - #${env.BUILD_NUMBER} - <${env.BUILD_URL}|(Open)>")
         }
     }
 }

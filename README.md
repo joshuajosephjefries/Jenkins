@@ -25,8 +25,7 @@
 
 ---------------------------------------------------------------
 Plugins for Slack in Jenkins:
-<br>   Slack Notification </br>
 <ul> 
-   Slack Notifications Plugin
-   Build User Vars
+  <li> Slack Notifications Plugin </li>
+  <li> Build User Vars </li>
 </ul>

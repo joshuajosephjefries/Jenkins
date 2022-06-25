@@ -20,7 +20,9 @@ pipeline {
     }
     post {
         always {
-          slackSend(channel: "#general", message: "${currentBuild.currentResult} - ${env.JOB_NAME} - #${env.BUILD_NUMBER} - <${env.BUILD_URL}|(Open)>")
+            wrap([$class: 'BuildUser']){
+                slackSend(channel: "#general", message: "Status: ${currentBuild.currentResult}, USER: ${BUILD_USER}, Build_ID: #${env.BUILD_ID}, JOB_NAME: ${env.JOB_NAME}, URL: <${env.BUILD_URL}|(Open)>")
+            }
         }
     }
 }
